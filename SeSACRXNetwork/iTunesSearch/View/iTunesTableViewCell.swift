@@ -11,15 +11,14 @@ import Then
 
 class iTunesTableViewCell: UITableViewCell {
     
-    let logoImageView = UIImageView()
+    let logoImageView = LogoImageView(frame: .zero)
     let productNameLabel = UILabel().then {
         $0.font = .boldSystemFont(ofSize: 18)
     }
-    let downloadButton = UIButton().then {
+    let downloadButton = DownLoadButton().then {
         $0.backgroundColor = .systemGray5
-        $0.setTitle("받기", for: .normal)
         $0.setTitleColor(.systemBlue, for: .normal)
-        $0.layer.cornerRadius = 20
+        
     }
 
     static let identifier = "SearchTableViewCell"
@@ -60,8 +59,7 @@ extension iTunesTableViewCell: ReusableProtocol {
         downloadButton.snp.makeConstraints { make in
             make.trailing.equalTo(contentSafe.trailing).inset(10)
             make.centerY.equalTo(logoImageView.snp.centerY)
-            make.width.equalTo(70)
-            make.height.equalTo(30)
+            
         }
         
         productNameLabel.snp.makeConstraints { make in

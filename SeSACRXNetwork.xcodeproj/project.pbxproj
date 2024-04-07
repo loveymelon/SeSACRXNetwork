@@ -36,6 +36,8 @@
 		DFA8DF4C2BC2A9FA00347103 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = DFA8DF4B2BC2A9FA00347103 /* Kingfisher */; };
 		DFA8DF4F2BC2ACB000347103 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA8DF4E2BC2ACB000347103 /* DetailViewController.swift */; };
 		DFA8DF512BC2ACBE00347103 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA8DF502BC2ACBE00347103 /* DetailView.swift */; };
+		DFA8DF542BC2AE1900347103 /* DownLoadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA8DF532BC2AE1900347103 /* DownLoadButton.swift */; };
+		DFA8DF562BC2AF6300347103 /* LogoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA8DF552BC2AF6300347103 /* LogoImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +65,8 @@
 		DFA8DF482BC2A01600347103 /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
 		DFA8DF4E2BC2ACB000347103 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DFA8DF502BC2ACBE00347103 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		DFA8DF532BC2AE1900347103 /* DownLoadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownLoadButton.swift; sourceTree = "<group>"; };
+		DFA8DF552BC2AF6300347103 /* LogoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,7 @@
 		DF4B58B52BC15E3C009280D7 /* SeSACRXNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				DFA8DF522BC2ADFC00347103 /* Custom */,
 				DFA8DF4D2BC2AC9200347103 /* DetailScene */,
 				DFA8DF472BC29FFB00347103 /* Protocol */,
 				DFA8DF462BC29FF200347103 /* Extension */,
@@ -233,6 +238,15 @@
 			path = DetailScene;
 			sourceTree = "<group>";
 		};
+		DFA8DF522BC2ADFC00347103 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				DFA8DF532BC2AE1900347103 /* DownLoadButton.swift */,
+				DFA8DF552BC2AF6300347103 /* LogoImageView.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -323,8 +337,10 @@
 				DF4B58CD2BC15E61009280D7 /* MovieModel.swift in Sources */,
 				DF4B58F82BC1B3D5009280D7 /* iTunesViewController.swift in Sources */,
 				DFA8DF432BC28EE200347103 /* iTunesModel.swift in Sources */,
+				DFA8DF542BC2AE1900347103 /* DownLoadButton.swift in Sources */,
 				DF4B58F02BC1ABD3009280D7 /* MovieViewModel.swift in Sources */,
 				DF4B58D12BC15E85009280D7 /* MovieViewController.swift in Sources */,
+				DFA8DF562BC2AF6300347103 /* LogoImageView.swift in Sources */,
 				DF4B58FA2BC1BB73009280D7 /* iTunesViewModel.swift in Sources */,
 				DF4B58CF2BC15E7B009280D7 /* MovieView.swift in Sources */,
 				DF4B58B72BC15E3C009280D7 /* AppDelegate.swift in Sources */,

@@ -38,13 +38,13 @@ class iTunesViewController: BaseViewController<iTunesView> {
         output.searchData
             .drive(mainView.tableView.rx.items(cellIdentifier: iTunesTableViewCell.identifier, cellType: iTunesTableViewCell.self)) { (indexPath, item, cell) in
                 
-                let url = URL(string: item.artworkUrl512)
-                
-                cell.logoImageView.kf.setImage(with: url)
+                cell.logoImageView.imageSetting(urlText: item.artworkUrl512)
                 cell.productNameLabel.text = item.trackName
                 
             }
             .disposed(by: disposeBag)
+        
+        
         
     }
     

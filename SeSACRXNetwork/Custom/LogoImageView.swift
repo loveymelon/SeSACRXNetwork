@@ -1,23 +1,14 @@
 //
-//  DetailView.swift
+//  LogoImageView.swift
 //  SeSACRXNetwork
 //
 //  Created by 김진수 on 4/7/24.
 //
 
 import UIKit
-import SnapKit
-import Then
+import Kingfisher
 
-class DetailView: BaseView {
-    
-    let logoImageView = UIImageView()
-    
-    let productLabel = UILabel()
-    
-    let companyLabel = UILabel()
-    
-    let downLoadButton = UIButton()
+class LogoImageView: UIImageView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,4 +18,10 @@ class DetailView: BaseView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func imageSetting(urlText: String) {
+        let url = URL(string: urlText)
+        
+        self.kf.setImage(with: url)
+    }
+
 }
