@@ -26,7 +26,6 @@ class MovieViewController: BaseViewController<MovieView> {
     
     override func bind() {
         
-        
         let search = mainView.searchBar.rx
         
         // input타입이 Observable<ControlProperty<String?>.Element> 일때는 어떻게 접근해야되는지 모르겠습니다.

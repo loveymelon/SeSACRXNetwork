@@ -11,7 +11,7 @@ import RxCocoa
 
 class iTunesViewController: BaseViewController<iTunesView> {
     
-    
+    let viewModel = iTunesViewModel()
     
     let disposeBag = DisposeBag()
 
@@ -28,12 +28,18 @@ class iTunesViewController: BaseViewController<iTunesView> {
     }
     
     override func bind() {
-        mainView.searchBar
-            .rx
-            .searchButtonClicked
-            .subscribe { _ in
-                print("tap")
-            }
+        let search = mainView.searchBar.rx
+            
+        let input = iTunesViewModel.Input(searchButtonTap: search.searchButtonClicked, searchText: search.text.orEmpty)
+        
+        let output = viewModel.transform(input: input)
+        
+        output.searchData
+            .drive(onNext: { text in
+                print(text)
+            })
+            .disposed(by: disposeBag)
+        
     }
     
 }
