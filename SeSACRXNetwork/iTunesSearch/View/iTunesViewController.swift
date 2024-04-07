@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Kingfisher
 
 class iTunesViewController: BaseViewController<iTunesView> {
     
@@ -35,9 +36,14 @@ class iTunesViewController: BaseViewController<iTunesView> {
         let output = viewModel.transform(input: input)
         
         output.searchData
-            .drive(onNext: { text in
-                print(text)
-            })
+            .drive(mainView.tableView.rx.items(cellIdentifier: iTunesTableViewCell.identifier, cellType: iTunesTableViewCell.self)) { (indexPath, item, cell) in
+                
+                let url = URL(string: item.artworkUrl512)
+                
+                cell.logoImageView.kf.setImage(with: url)
+                cell.productNameLabel.text = item.trackName
+                
+            }
             .disposed(by: disposeBag)
         
     }

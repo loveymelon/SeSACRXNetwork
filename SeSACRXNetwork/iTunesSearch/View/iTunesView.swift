@@ -15,6 +15,11 @@ class iTunesView: BaseView {
     
     var searchBar: UISearchBar { return searchController.searchBar }
     
+    let tableView = UITableView().then {
+        $0.register(iTunesTableViewCell.self, forCellReuseIdentifier: iTunesTableViewCell.identifier)
+        $0.rowHeight = 100
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -24,11 +29,13 @@ class iTunesView: BaseView {
     }
     
     override func configureHierarchy() {
-
+        addSubview(tableView)
     }
     
     override func configureLayout() {
-
+        tableView.snp.makeConstraints { make in
+            make.edges.equalTo(safeAreaLayoutGuide.snp.edges)
+        }
     }
 
 }
