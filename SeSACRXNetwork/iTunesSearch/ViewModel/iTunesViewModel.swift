@@ -13,6 +13,7 @@ class iTunesViewModel {
     
     struct Input {
         let searchButtonTap: ControlEvent<Void>
+        let searchCancelTap: ControlEvent<Void>
         let searchText: ControlProperty<String>
     }
     
@@ -35,6 +36,11 @@ class iTunesViewModel {
                     .disposed(by: owner.disposeBag)
                 
 //                search.accept()
+            }.disposed(by: disposeBag)
+        
+        input.searchCancelTap
+            .subscribe(with: self) { owner, _ in
+                search.accept([])
             }.disposed(by: disposeBag)
         
         let searchResult = search.asDriver(onErrorJustReturn: [Contents(trackName: "", artistName: "", isGameCenterEnabled: false, supportedDevices: [""], screenshotUrls: [""], artworkUrl512: "", contentAdvisoryRating: "")])

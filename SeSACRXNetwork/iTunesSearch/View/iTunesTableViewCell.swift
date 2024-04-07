@@ -8,6 +8,8 @@
 import UIKit
 import SnapKit
 import Then
+import RxSwift
+import RxCocoa
 
 class iTunesTableViewCell: UITableViewCell {
     
@@ -18,10 +20,11 @@ class iTunesTableViewCell: UITableViewCell {
     let downloadButton = DownLoadButton().then {
         $0.backgroundColor = .systemGray5
         $0.setTitleColor(.systemBlue, for: .normal)
-        
     }
 
     static let identifier = "SearchTableViewCell"
+    
+    var disposeBag = DisposeBag()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -31,6 +34,12 @@ class iTunesTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        disposeBag = DisposeBag()
     }
     
 }
@@ -59,14 +68,14 @@ extension iTunesTableViewCell: ReusableProtocol {
         downloadButton.snp.makeConstraints { make in
             make.trailing.equalTo(contentSafe.trailing).inset(10)
             make.centerY.equalTo(logoImageView.snp.centerY)
-            
+            make.height.equalTo(30)
         }
         
         productNameLabel.snp.makeConstraints { make in
             make.leading.equalTo(logoImageView.snp.trailing).offset(10)
             make.centerY.equalTo(logoImageView.snp.centerY)
             make.trailing.equalTo(downloadButton.snp.leading).offset(-30)
-            make.height.equalTo(30)
+            make.height.equalTo(20)
         }
     }
     

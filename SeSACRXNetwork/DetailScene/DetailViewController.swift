@@ -6,24 +6,37 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class DetailViewController: BaseViewController<DetailView> {
+    
+    let viewModel = DetailViewModel()
+    
+    let disposeBag = DisposeBag()
+    
+    var selectedData = ControlEvent<Contents>.Element()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func configureNav() {
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
-    */
+    
+    override func bind() {
+        let input = DetailViewModel.Input(selectedData: selectedData)
+        
+        let output = viewModel.transform(input: input)
+        
+        output.datas
+            .drive(with: self) { owner, data in
+                owner.mainView.logoImageView.imageSetting(urlText: data.artworkUrl512)
+                owner.mainView.productLabel.text = data.trackName
+                owner.mainView.companyLabel.text = data.artistName
+            }.disposed(by: disposeBag)
+    }
 
 }

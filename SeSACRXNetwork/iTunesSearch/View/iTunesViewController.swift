@@ -31,7 +31,7 @@ class iTunesViewController: BaseViewController<iTunesView> {
     override func bind() {
         let search = mainView.searchBar.rx
             
-        let input = iTunesViewModel.Input(searchButtonTap: search.searchButtonClicked, searchText: search.text.orEmpty)
+        let input = iTunesViewModel.Input(searchButtonTap: search.searchButtonClicked, searchCancelTap: search.cancelButtonClicked, searchText: search.text.orEmpty)
         
         let output = viewModel.transform(input: input)
         
@@ -43,6 +43,18 @@ class iTunesViewController: BaseViewController<iTunesView> {
                 
             }
             .disposed(by: disposeBag)
+        
+        Observable.zip(mainView.tableView.rx.itemSelected, mainView.tableView.rx.modelSelected(Contents.self))
+            .bind(with: self, onNext: { owner, item in
+                let data = item.1
+            
+                let vc = DetailViewController()
+                
+                vc.selectedData = data
+                
+                owner.navigationController?.pushViewController(vc, animated: true)
+                
+            }).disposed(by: disposeBag)
         
         
         
