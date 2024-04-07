@@ -12,7 +12,11 @@ import Then
 class DetailView: BaseView {
     
     let logoImageView = LogoImageView(frame: .zero)
-    let productLabel = UILabel()
+    let productLabel = UILabel().then {
+        $0.font = .boldSystemFont(ofSize: 18)
+        $0.numberOfLines = 0
+        $0.backgroundColor = .red
+    }
     let companyLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 10)
         $0.textColor = .lightGray
@@ -22,6 +26,7 @@ class DetailView: BaseView {
         $0.alignment = .leading
         $0.distribution = .fillProportionally
         $0.spacing = 0
+        $0.backgroundColor = .blue
     }
     let downLoadButton = DownLoadButton().then {
         $0.backgroundColor = .systemBlue
@@ -60,16 +65,13 @@ class DetailView: BaseView {
         }
         
         productLabel.snp.makeConstraints { make in
-            make.height.equalTo(detailStackView.snp.height).multipliedBy(0.5)
+            make.height.equalTo(detailStackView.snp.height).multipliedBy(0.4)
+            make.width.equalToSuperview()
         }
         
         companyLabel.snp.makeConstraints { make in
-            make.height.equalTo(productLabel.snp.height).multipliedBy(0.5)
+            make.height.equalTo(productLabel.snp.height).multipliedBy(0.7)
         }
-        
-//        downLoadButton.snp.makeConstraints { make in
-//            make.height.equalTo(detailStackView.snp.height).multipliedBy(0.4)
-//        }
         
     }
     
