@@ -36,6 +36,8 @@ class DetailViewController: BaseViewController<DetailView> {
                 owner.mainView.logoImageView.imageSetting(urlText: data.artworkUrl512)
                 owner.mainView.productLabel.text = data.trackName
                 owner.mainView.companyLabel.text = data.artistName
+                owner.mainView.versionLabel.text = "버전 \(data.version)"
+                owner.mainView.updateDetailView.text = data.description
             }.disposed(by: disposeBag)
     }
 

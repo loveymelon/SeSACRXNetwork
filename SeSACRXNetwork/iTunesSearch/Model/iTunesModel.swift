@@ -19,8 +19,10 @@ struct Contents: Decodable {
     let screenshotUrls: [String]
     let artworkUrl512: String // 사진
     let contentAdvisoryRating: String
+    let version: String
+    let description: String
     
-    init(trackName: String = "", artistName: String = "", isGameCenterEnabled: Bool = false, supportedDevices: [String] = [""], screenshotUrls: [String] = [""], artworkUrl512: String = "", contentAdvisoryRating: String = "") {
+    init(trackName: String = "", artistName: String = "", isGameCenterEnabled: Bool = false, supportedDevices: [String] = [""], screenshotUrls: [String] = [""], artworkUrl512: String = "", contentAdvisoryRating: String = "", version: String = "", description: String = "") {
         self.trackName = trackName
         self.artistName = artistName
         self.isGameCenterEnabled = isGameCenterEnabled
@@ -28,5 +30,7 @@ struct Contents: Decodable {
         self.screenshotUrls = screenshotUrls
         self.artworkUrl512 = artworkUrl512
         self.contentAdvisoryRating = contentAdvisoryRating
+        self.version = version
+        self.description = description
     }
 }

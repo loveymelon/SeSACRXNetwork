@@ -11,11 +11,15 @@ import Then
 
 class DetailView: BaseView {
     
+    let scrollView = UIScrollView().then {
+        $0.bounces = false
+    }
+    
+    let contentView = UIView()
     let logoImageView = LogoImageView(frame: .zero)
     let productLabel = UILabel().then {
         $0.font = .boldSystemFont(ofSize: 18)
         $0.numberOfLines = 0
-        $0.backgroundColor = .red
     }
     let companyLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 10)
@@ -26,10 +30,25 @@ class DetailView: BaseView {
         $0.alignment = .leading
         $0.distribution = .fillProportionally
         $0.spacing = 0
-        $0.backgroundColor = .blue
     }
+    
+    let newLabel = UILabel().then {
+        $0.text = "새로운 소식"
+        $0.font = .italicSystemFont(ofSize: 20)
+    }
+    
+    let versionLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 12)
+        $0.textColor = .lightGray
+    }
+    
     let downLoadButton = DownLoadButton().then {
         $0.backgroundColor = .systemBlue
+    }
+    
+    let updateDetailView = UITextView().then {
+        $0.isScrollEnabled = false
+        $0.isEditable = false
     }
 
     override init(frame: CGRect) {
@@ -41,27 +60,40 @@ class DetailView: BaseView {
     }
     
     override func configureHierarchy() {
+        addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        
         [productLabel, companyLabel, downLoadButton].forEach { item in
             detailStackView.addArrangedSubview(item)
         }
         
-        [logoImageView, detailStackView].forEach { item in
-            addSubview(item)
+        [logoImageView, detailStackView, newLabel, versionLabel, updateDetailView].forEach { item in
+            contentView.addSubview(item)
         }
     }
     
     override func configureLayout() {
+        
+        scrollView.snp.makeConstraints { make in
+            make.edges.equalTo(safeAreaLayoutGuide)
+        }
+        
+        contentView.snp.makeConstraints { make in
+            make.verticalEdges.equalTo(scrollView)
+            make.width.equalTo(scrollView.snp.width)
+        }
+        
         logoImageView.snp.makeConstraints { make in
             make.size.equalTo(100)
-            make.leading.equalTo(safeAreaLayoutGuide.snp.leading).inset(10)
-            make.top.equalTo(self.safeAreaLayoutGuide.snp.top)
+            make.leading.equalTo(contentView.snp.leading).inset(10)
+            make.top.equalTo(contentView.snp.top)
         }
         
         detailStackView.snp.makeConstraints { make in
             make.height.equalTo(logoImageView.snp.height)
             make.leading.equalTo(logoImageView.snp.trailing).offset(10)
             make.top.equalTo(logoImageView.snp.top)
-            make.trailing.equalTo(safeAreaLayoutGuide.snp.trailing).inset(10)
+            make.trailing.equalTo(contentView.snp.trailing).inset(10)
         }
         
         productLabel.snp.makeConstraints { make in
@@ -71,6 +103,23 @@ class DetailView: BaseView {
         
         companyLabel.snp.makeConstraints { make in
             make.height.equalTo(productLabel.snp.height).multipliedBy(0.7)
+        }
+        
+        newLabel.snp.makeConstraints { make in
+            make.top.equalTo(logoImageView.snp.bottom).offset(20)
+            make.leading.equalTo(contentView.snp.leading).inset(10)
+            make.height.equalTo(30)
+        }
+        
+        versionLabel.snp.makeConstraints { make in
+            make.top.equalTo(newLabel.snp.bottom).offset(10)
+            make.leading.equalTo(newLabel.snp.leading)
+        }
+        
+        updateDetailView.snp.makeConstraints { make in
+            make.horizontalEdges.equalTo(contentView.snp.horizontalEdges).inset(10)
+            make.top.equalTo(versionLabel.snp.bottom).offset(10)
+            make.height.equalTo(100)
         }
         
     }
