@@ -29,14 +29,16 @@ class iTunesViewModel {
         input.searchButtonTap
             .withLatestFrom(input.searchText)
             .map { String($0).replacingOccurrences(of: " ", with: "+") }
-            .subscribe(with: self) { owner, text in
-                let result = Network.fetchSearchData(text: text)
-                
-                result.bind(to: search)
-                    .disposed(by: owner.disposeBag)
-                
-//                search.accept()
-            }.disposed(by: disposeBag)
+            .flatMap { Network.fetchSearchData(text: $0) } // flatMap을 안사용하니 Single이 감싸져서 나온다.
+            .subscribe(with: self, onNext: { owner, result in
+                switch result {
+                case .success(let data):
+                    search.accept(data)
+                case .failure(let error):
+                    print(error)
+                }
+            })
+            .disposed(by: disposeBag)
         
         input.searchCancelTap
             .subscribe(with: self) { owner, _ in

@@ -49,6 +49,7 @@ class DetailView: BaseView {
     let updateDetailView = UITextView().then {
         $0.isScrollEnabled = false
         $0.isEditable = false
+        $0.font = .systemFont(ofSize: 14)
     }
 
     override init(frame: CGRect) {

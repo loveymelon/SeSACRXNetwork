@@ -59,28 +59,27 @@ class Network {
         }.debug() // Observable을 커스텀해서 만든후
     }
     
-    static func fetchSearchData(text: String) -> Observable<[Contents]> {
+    static func fetchSearchData(text: String) -> Single<Result<[Contents],APIError>> {
         
-        return Observable<[Contents]>.create { observer in
+        return Single.create { single in
             guard let url = URL(string: "https://itunes.apple.com/search?term=\(text)&country=KR&media=software") else {
-                observer.onError(APIError.invalidURL)
+                single(.failure(APIError.invalidURL))
                 return Disposables.create() // 필요한 시점일때 리소스 정리를 위해서
             }
             
             AF.request(url, method: .get).validate(statusCode: 200..<300).responseDecodable(of: iTunesModel.self) { response in
                 switch response.result {
                 case .success(let data):
-                    observer.onNext(data.results)
-                    observer.onCompleted()
+                    single(.success(.success(data.results)))
                 case .failure(let error):
                     print(error.localizedDescription)
-                    observer.onError(APIError.statusError)
+                    single(.success(.failure(APIError.invalidURL)))
                 }
             }
             
             return Disposables.create()
             
-        }
+        }.debug("single observerable")
     }
     
 }
