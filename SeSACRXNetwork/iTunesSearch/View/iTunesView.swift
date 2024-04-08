@@ -18,7 +18,7 @@ class iTunesView: BaseView {
     let tableView = UITableView().then {
         $0.register(iTunesTableViewCell.self, forCellReuseIdentifier: iTunesTableViewCell.identifier)
         $0.separatorStyle = .none
-        $0.rowHeight = 100
+        $0.rowHeight = UIScreen.main.bounds.height / 2
     }
     
     override init(frame: CGRect) {

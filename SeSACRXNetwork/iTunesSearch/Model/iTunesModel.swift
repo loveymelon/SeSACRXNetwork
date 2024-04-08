@@ -21,8 +21,10 @@ struct Contents: Decodable {
     let contentAdvisoryRating: String
     let version: String
     let description: String
+    let averageUserRating: Double
+    let genres: [String]
     
-    init(trackName: String = "", artistName: String = "", isGameCenterEnabled: Bool = false, supportedDevices: [String] = [""], screenshotUrls: [String] = [""], artworkUrl512: String = "", contentAdvisoryRating: String = "", version: String = "", description: String = "") {
+    init(trackName: String = "", artistName: String = "", isGameCenterEnabled: Bool = false, supportedDevices: [String] = [], screenshotUrls: [String] = [], artworkUrl512: String = "", contentAdvisoryRating: String = "", version: String = "", description: String = "", averageUserRating: Double = 0.0, genres: [String] = []) {
         self.trackName = trackName
         self.artistName = artistName
         self.isGameCenterEnabled = isGameCenterEnabled
@@ -32,5 +34,7 @@ struct Contents: Decodable {
         self.contentAdvisoryRating = contentAdvisoryRating
         self.version = version
         self.description = description
+        self.averageUserRating = averageUserRating
+        self.genres = genres
     }
 }

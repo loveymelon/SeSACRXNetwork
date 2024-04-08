@@ -31,6 +31,8 @@
 		DF4B58F82BC1B3D5009280D7 /* iTunesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4B58F72BC1B3D5009280D7 /* iTunesViewController.swift */; };
 		DF4B58FA2BC1BB73009280D7 /* iTunesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4B58F92BC1BB73009280D7 /* iTunesViewModel.swift */; };
 		DF580CF62BC2E3F8004A1ADD /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF580CF52BC2E3F8004A1ADD /* DetailViewModel.swift */; };
+		DF7CEE572BC44335004B7C5C /* ScreenShotImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7CEE562BC44335004B7C5C /* ScreenShotImageView.swift */; };
+		DF7CEE592BC44E1E004B7C5C /* iTunesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7CEE582BC44E1E004B7C5C /* iTunesCollectionViewCell.swift */; };
 		DFA8DF432BC28EE200347103 /* iTunesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA8DF422BC28EE200347103 /* iTunesModel.swift */; };
 		DFA8DF452BC29FB500347103 /* iTunesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA8DF442BC29FB500347103 /* iTunesTableViewCell.swift */; };
 		DFA8DF492BC2A01600347103 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA8DF482BC2A01600347103 /* ReusableProtocol.swift */; };
@@ -62,6 +64,8 @@
 		DF4B58F72BC1B3D5009280D7 /* iTunesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesViewController.swift; sourceTree = "<group>"; };
 		DF4B58F92BC1BB73009280D7 /* iTunesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesViewModel.swift; sourceTree = "<group>"; };
 		DF580CF52BC2E3F8004A1ADD /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		DF7CEE562BC44335004B7C5C /* ScreenShotImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenShotImageView.swift; sourceTree = "<group>"; };
+		DF7CEE582BC44E1E004B7C5C /* iTunesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesCollectionViewCell.swift; sourceTree = "<group>"; };
 		DFA8DF422BC28EE200347103 /* iTunesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesModel.swift; sourceTree = "<group>"; };
 		DFA8DF442BC29FB500347103 /* iTunesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesTableViewCell.swift; sourceTree = "<group>"; };
 		DFA8DF482BC2A01600347103 /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
@@ -196,6 +200,7 @@
 				DF4B58F52BC1B3C4009280D7 /* iTunesView.swift */,
 				DF4B58F72BC1B3D5009280D7 /* iTunesViewController.swift */,
 				DFA8DF442BC29FB500347103 /* iTunesTableViewCell.swift */,
+				DF7CEE582BC44E1E004B7C5C /* iTunesCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -246,6 +251,7 @@
 			children = (
 				DFA8DF532BC2AE1900347103 /* DownLoadButton.swift */,
 				DFA8DF552BC2AF6300347103 /* LogoImageView.swift */,
+				DF7CEE562BC44335004B7C5C /* ScreenShotImageView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -347,11 +353,13 @@
 				DF4B58FA2BC1BB73009280D7 /* iTunesViewModel.swift in Sources */,
 				DF4B58CF2BC15E7B009280D7 /* MovieView.swift in Sources */,
 				DF580CF62BC2E3F8004A1ADD /* DetailViewModel.swift in Sources */,
+				DF7CEE572BC44335004B7C5C /* ScreenShotImageView.swift in Sources */,
 				DF4B58B72BC15E3C009280D7 /* AppDelegate.swift in Sources */,
 				DF4B58F32BC1AD75009280D7 /* Network.swift in Sources */,
 				DFA8DF4F2BC2ACB000347103 /* DetailViewController.swift in Sources */,
 				DF4B58D72BC15EE5009280D7 /* BaseView.swift in Sources */,
 				DFA8DF492BC2A01600347103 /* ReusableProtocol.swift in Sources */,
+				DF7CEE592BC44E1E004B7C5C /* iTunesCollectionViewCell.swift in Sources */,
 				DF4B58E92BC1A80D009280D7 /* SearchTableViewCell.swift in Sources */,
 				DF4B58EB2BC1A8D8009280D7 /* MovieCollectionViewCell.swift in Sources */,
 				DF4B58B92BC15E3C009280D7 /* SceneDelegate.swift in Sources */,

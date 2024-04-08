@@ -51,6 +51,12 @@ class DetailView: BaseView {
         $0.isEditable = false
         $0.font = .systemFont(ofSize: 14)
     }
+    
+    let label = UILabel().then {
+        
+        $0.text = "dfdsfaa"
+        $0.font = .systemFont(ofSize: 20)
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -68,7 +74,7 @@ class DetailView: BaseView {
             detailStackView.addArrangedSubview(item)
         }
         
-        [logoImageView, detailStackView, newLabel, versionLabel, updateDetailView].forEach { item in
+        [logoImageView, detailStackView, newLabel, versionLabel, updateDetailView, label].forEach { item in
             contentView.addSubview(item)
         }
     }
@@ -120,7 +126,14 @@ class DetailView: BaseView {
         updateDetailView.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(contentView.snp.horizontalEdges).inset(10)
             make.top.equalTo(versionLabel.snp.bottom).offset(10)
-            make.height.equalTo(100)
+            make.height.equalTo(600)
+        }
+        
+        label.snp.makeConstraints { make in
+            make.top.equalTo(updateDetailView.snp.bottom).offset(10)
+            make.height.equalTo(35)
+            make.leading.equalTo(contentView.snp.leading).inset(10)
+            make.bottom.equalTo(contentView.snp.bottom).inset(10)
         }
         
     }

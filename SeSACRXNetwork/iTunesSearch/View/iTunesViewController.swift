@@ -40,7 +40,11 @@ class iTunesViewController: BaseViewController<iTunesView> {
                 
                 cell.logoImageView.imageSetting(urlText: item.artworkUrl512)
                 cell.productNameLabel.text = item.trackName
+                cell.artistLabel.text = item.artistName
+                cell.avgLabel.text = "\((item.averageUserRating * 10).rounded() / 10)"
+                cell.genreLabel.text = item.genres[0]
                 
+                // 어떻게 item의 값을 collection에게 전할지 모르겠다.....
             }
             .disposed(by: disposeBag)
         

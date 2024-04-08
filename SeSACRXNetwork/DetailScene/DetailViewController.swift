@@ -20,6 +20,7 @@ class DetailViewController: BaseViewController<DetailView> {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
     }
     
     override func configureNav() {
